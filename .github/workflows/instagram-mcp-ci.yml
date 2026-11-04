@@ -1,0 +1,29 @@
+name: Instagram MCP CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: Compile
+        run: python -m compileall -q app server.py
+      - name: Unit tests
+        env:
+          PYTHONPATH: .
+          APP_SECRET_KEY: test-secret-that-is-long-enough-for-fernet-123456
+          PUBLIC_BASE_URL: http://localhost:8000
+          IG_APP_ID: test-app
+          IG_APP_SECRET: test-secret
+          INTERNAL_SERVICE_TOKEN: internal-test-token
+        run: pytest -q tests/

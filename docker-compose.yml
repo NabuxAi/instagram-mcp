@@ -1,0 +1,42 @@
+services:
+  mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - APP_NAME=${APP_NAME:-Instagram MCP by Nabux}
+      - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-http://localhost:8000}
+      - APP_SECRET_KEY=${APP_SECRET_KEY}
+      - IG_APP_ID=${IG_APP_ID}
+      - IG_APP_SECRET=${IG_APP_SECRET}
+      - IG_REDIRECT_URI=${IG_REDIRECT_URI:-http://localhost:8000/instagram/callback}
+      - IG_GRAPH_VERSION=${IG_GRAPH_VERSION:-v26.0}
+      - IG_SCOPES=${IG_SCOPES:-instagram_business_basic,instagram_business_content_publish,instagram_business_manage_comments,instagram_business_manage_messages,instagram_business_manage_insights}
+      - INTERNAL_SERVICE_TOKEN=${INTERNAL_SERVICE_TOKEN}
+      - CRM_INTAKE_URL=${CRM_INTAKE_URL:-https://crm.nabuxai.com/api/v1/crm/intake}
+      - CRM_INTAKE_ENABLED=${CRM_INTAKE_ENABLED:-false}
+      - NABUGATE_SECRET=${NABUGATE_SECRET}
+      - NABUAUTH_URL=${NABUAUTH_URL:-https://auth.nabuxai.com}
+      - NABUAUTH_CLIENT_ID=${NABUAUTH_CLIENT_ID:-}
+      - NABUAUTH_CLIENT_SECRET=${NABUAUTH_CLIENT_SECRET:-}
+      - NABUAUTH_REDIRECT_URI=${NABUAUTH_REDIRECT_URI:-}
+      - POSTIZ_FRONTEND_URL=${POSTIZ_FRONTEND_URL:-}
+      - POSTIZ_API_URL=${POSTIZ_API_URL:-}
+      - POSTIZ_CLIENT_ID=${POSTIZ_CLIENT_ID:-}
+      - POSTIZ_CLIENT_SECRET=${POSTIZ_CLIENT_SECRET:-}
+      - DATA_DIR=/data
+      - MEDIA_DIR=/data/media
+      - MEDIA_MAX_BYTES=${MEDIA_MAX_BYTES:-1073741824}
+      - SCHEDULE_MAX_ATTEMPTS=${SCHEDULE_MAX_ATTEMPTS:-5}
+      - STAGED_MEDIA_TTL=${STAGED_MEDIA_TTL:-14400}
+      - STAGED_VIDEO_MAX_BYTES=${STAGED_VIDEO_MAX_BYTES:-104857600}
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8000
+    volumes:
+      - instagram-mcp-data:/data
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+volumes:
+  instagram-mcp-data:

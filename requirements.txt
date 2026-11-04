@@ -1,0 +1,15 @@
+mcp>=1.26.0,<2
+cryptography>=42.0
+pydantic>=2.11
+httpx>=0.27.0
+uvicorn>=0.30.0
+python-multipart>=0.0.9
+python-dotenv>=1.0.1
+pytest>=8.0
+pytest-asyncio>=0.23
+Pillow>=10.4,<13
+arabic-reshaper>=3.0.0
+python-bidi>=0.6.0
+
+# Separate read-only Instagram session/cookie reader; never used by Meta send routes.
+instagrapi==3.0.3

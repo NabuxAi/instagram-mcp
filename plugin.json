@@ -1,0 +1,38 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "nabu-instagram",
+  "version": "0.1.0",
+  "description": "Manage connected Instagram business and creator accounts from ChatGPT.",
+  "author": {
+    "name": "NabuxAI",
+    "url": "https://nabuxai.com"
+  },
+  "homepage": "https://ig.nabuxai.com",
+  "repository": "https://github.com/NabuxAi/InstagramMCP",
+  "keywords": [
+    "nabuxai",
+    "instagram",
+    "mcp",
+    "social-media"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Nabu Instagram",
+        "shortDescription": "Manage connected Instagram business and creator accounts from ChatGPT.",
+        "longDescription": "Manage connected Instagram business and creator accounts from ChatGPT. Connect your own authorized account. No platform credentials are stored in ChatGPT plugin manifests.",
+        "developerName": "NabuxAI",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://ig.nabuxai.com",
+        "defaultPrompt": [
+          "Show my connected Instagram accounts and recent insights."
+        ],
+        "brandColor": "#0B1D35"
+      }
+    }
+  }
+}
